@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  get 'brewerylist', to:'breweries#nglist'
+  get 'beerlist', to:'beers#nglist'
+
   resources :styles
 
   resources :memberships
