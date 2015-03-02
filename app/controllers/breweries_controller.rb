@@ -15,18 +15,21 @@ class BreweriesController < ApplicationController
 
     order = params[:order] || 'name'
 
-    sort = params[:sort] || 'asc'
+    sort = params[:sort] || 'a'
 
     if order == 'year'
       @active_breweries = Brewery.active.order(:year)
       @retired_breweries = Brewery.retired.order(:year)
     end
 
-    if sort == 'desc'
-      @active_breweries.reverse_order
-      @retired_breweries.reverse_order
+    if sort == 'a'
+      @active_breweries = @active_breweries.reverse_order
+      @retired_breweries = @retired_breweries.reverse_order
     end
-    @s = sort
+
+    @s = 'a'
+    @s = 'b' if sort == 'a'
+    @o = order
 
   end
 
